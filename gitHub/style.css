@@ -1,0 +1,80 @@
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: #3e4668;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin: 10px 0;
+}
+
+input {
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: #91a8cf;
+    color: white;
+}
+
+main {
+    width: 400px;
+    padding: 5px;
+    background: #91a8cf;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+}
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+h1,
+p {
+    margin-top: 10px;
+}
+nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+h5 {
+    width: 100px;
+    height: 100px;
+    background: #91a8cf;
+    margin-top: 10px;
+    animation-name: loadPage;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+}
+@keyframes loadPage {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+        background: red;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+        background: blue;
+    }
+    100% {
+        transform: rotate(360deg) scale(0.8);
+        background: green;
+    }
+}
+
+.d-none {
+    display: none;
+}
+
