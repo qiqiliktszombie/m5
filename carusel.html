@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+        />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    main {
+        display: flex;
+        align-items: center;
+        background: blanchedalmond;
+    }
+    nav {
+        overflow-x: hidden;
+    }
+    div {
+        display: flex;
+        /*transform: translateX(-50%);*/
+        transition: all 0.5s;
+    }
+    img {
+        /* width: 50%;  */
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+
+    i {
+        padding: 10px;
+        font-size: 30px;
+        color: black;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+    <main>
+        <i class="fas fa-arrow-left" id="arrowLeft"></i>
+        <nav>
+            <div id="carusel">
+                <img src="https://moizver.com/upload/iblock/ce4/ce437573fa8c88c1dbfc177409e0d6c2.jpg
+                "/>
+                <img src="https://tochka.by/upload/resize_cache/iblock/d05/768_512_1/j71qqmr9vl4cyulku0nxxtrfhfitnhmv.jpg
+                "/>
+                <img src="https://rg.ru/uploads/images/214/34/08/photorep_imageid_538385_8085b70e8b6927e1575618884.jpg
+                "/>
+                <img src="https://static.sobaka.ru/images/image/01/63/21/50/_normal.jpeg?v=1671365310"/>
+             </div>
+        </nav>
+        <i class="fas fa-arrow-right" id="arrowRight"></i>
+    </main>
+    <script> 
+    let arrowLeft = document.getElementById("arrowLeft")
+    let arrowRight = document.getElementById("arrowRight")
+    let carusel = document.getElementById("carusel")
+
+    let caruselElem = 3;
+    let width = 100/caruselElem;
+    let item = carusel.children.length - caruselElem;
+    let current = 0;
+
+    for (const i of carusel.children) {
+        i.style.width = width + "%"
+    }
+
+    arrowRight.addEventListener("click", clickRight);
+
+    function clickRight() {
+        current += 1
+        if (current > item) {
+            current = 0
+        }
+        carusel.style.transform = `translateX(-${width * current}%)`
+    }
+
+    arrowLeft.addEventListener("click", clickLeft);
+
+    function clickLeft() {
+    current -= 1
+    if (current < 0) {
+        current = item
+    }
+    carusel.style.transform = `translateX(-${width * current}%)`
+}
+
+
+    
+    
+    
+    
+    </script>
+</body>
+</html>
