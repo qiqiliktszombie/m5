@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    canvas {
+      border: 3px solid black;
+    }
+  </style>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      canvas.width = 500;
+      canvas.height = 500;
+
+      let posX = [];
+      let posY = [];
+
+      let config = {
+        lineSize: 5,
+        color: "black",
+      };
+      canvas.addEventListener("mousedown", (e) => {
+        draw = true;
+        context.beginPath();
+      });
+      canvas.addEventListener("mouseup", (e) => {
+        draw = false;
+      });
+      canvas.onmousemove = (e) => {
+        if (draw) {
+          posX.push(e.clientX);
+          drawLine(e.clientX, e.clientY);
+          posY.push(e.clientY);
+        } else {
+            posX.push(false);
+            posY.push(false);
+        }
+      };
+      function drawLine(x, y) {
+        context.lineWidth = config.lineSize;
+        context.strokeStyle = config.color;
+        context.lineTo(x, y);
+        context.stroke();
+      }
+
+      function clearCanvas() {
+        canvas.width = canvas.width;
+        canvas.height = canvas.height;
+      }
+      document.addEventListener("keydown", (e) => {
+        if (e.code == "KeyC") {
+          clearCanvas();
+        }
+        if (e.code == "KeyZ") {
+          clearCanvas();
+          reDraw();
+        }
+      });
+      function reDraw() {
+        posX.splice(-5);
+        posY.splice(-5);
+        for (let i = 0; i < posX.length; i++) {
+            if (posX[i] == false) {
+                context.beginPath();
+            } else {
+          drawLine(posX[i], posY[i]);
+        }
+      }
+    } 
+    </script>
+  </body>
+</html>
